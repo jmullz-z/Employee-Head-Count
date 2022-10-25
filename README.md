@@ -24,13 +24,4 @@ THEN I am prompted to enter the intern’s name, ID, email, and school, and I am
 WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 
-Installation
-The user should clone the repository from GitHub and download Node. This application also requires a file system and inquirer module. If testing is required, this application uses Jest.
-
-Usage
-Use inquirer from your command line to answer questions about your project.
-
-Tests
-Run npm test to run Jest for tests on constructors.
-
 GITHUB: git@github.com:jmullz-z/Employee-Head-Count.git
