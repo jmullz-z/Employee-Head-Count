@@ -1,42 +1,26 @@
-DROP TABLE IF EXISTS employees;
+INSERT INTO departments (name)  
+VALUES ("Engineering"),
+       ("Finance"),
+       ("Legal"),
+       ("Sales");
 
-DROP TABLE IF EXISTS roles;
+ INSERT INTO roles (department_id,title,salary)
+VALUES (1,"Lead Engineer",200000),
+       (1,"Software Engineer",110000),
+       (2,"Account Manager",140000),
+       (2,"Accountant",110000),
+       (3,"Legal Team Lead",210000),
+       (3,"Lawyer",190000),
+       (4,"Sales Lead",90000),
+       (4,"Salesperson",80000);
 
-DROP TABLE IF EXISTS departments;
 
-
-CREATE TABLE departments (
-	id INTEGER AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(30) NOT NULL
-);
-
-CREATE TABLE roles (
-	id INTEGER AUTO_INCREMENT PRIMARY KEY,
-	
-	title VARCHAR(30) NOT NULL,
-
-	salary DECIMAL(10,2) NOT NULL,
-
-	department_id INTEGER,
-
-	FOREIGN KEY (department_id)
-		REFERENCES departments(id)
-		ON DELETE SET NULL
-);
-
-CREATE TABLE employees (
-	id INTEGER AUTO_INCREMENT PRIMARY KEY,
-	first_name VARCHAR(30) NOT NULL,
-	last_name VARCHAR(30) NOT NULL,
-	role_id INTEGER,
-	department_id INTEGER,
-	manager_id INTEGER,
-
-	FOREIGN KEY (role_id)
-		REFERENCES roles(id)
-		ON DELETE SET NULL,
-
-	FOREIGN KEY (department_id)
-		REFERENCES departments(id)
-		ON DELETE SET NULL
-);
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
+VALUES ("John", "Doe", 1, null),
+    ("Jim", "Jones", 2, 1),
+    ("Israel", "Rodriguez", 3, null),
+    ("Tupac", "Shakur", 4, 2),
+    ("Sharkesha", "Singh", 4, null),
+    ("Deebo", "Bronson", 3, 3),
+    ("Ghostface", "Killah", 3, null),
+    ("Eazy", "Ee", 2, 4);
