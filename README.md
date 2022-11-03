@@ -24,4 +24,30 @@ THEN I am prompted to enter the intern’s name, ID, email, and school, and I am
 WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 
+Description
+
+A simple employee tracking CLI application for interacting with a MYSQL database containing department, role, and employee data.
+
+Installation
+
+use package.json, npm i in command line. Have Node installed. Needs inquirer.
+
+Usage
+
+use it to track employees and enter information into a mysql database
+
+License
+
+License: CC BY 4.0
+
+Contributions
+
+Jessica Mulliken/ jmullz-z
+
+Contact
+
+jess.t.mulliken@gmail.com
+
+
+
 GITHUB: git@github.com:jmullz-z/Employee-Head-Count.git
