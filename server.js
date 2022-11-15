@@ -10,7 +10,7 @@ const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: process.env.DB_PASSWORD,
-    database: "employeeTracker_db"
+    database: "employee-head-count_db"
 });
 
 db.connect(function(err) {
@@ -19,17 +19,15 @@ db.connect(function(err) {
     startPrompt();
 });
 
-// Figlet to show "EMPLOYEE TRACKER" in cool line format
-figlet("EMPLOYEE  TRACKER", function(err, res) {
+figlet("EMPLOYEE HEAD COUNT", function(err, res) {
     if (err) {
-        console.log('Something went wrong...');
+        console.log('Error');
         console.dir(err);
         return;
     }
     console.log(res)
 });
 
-// startPrompt function that starts question prompt + switch statements
 const startPrompt = () => {
     return inquirer.prompt([{
         name: 'action',
@@ -69,11 +67,10 @@ const startPrompt = () => {
     });
 }
 
-// viewAllDepartments function
 const viewAllDepartments = () => {
     figlet("ALL  DEPARTMENTS", function(err, res) {
         if (err) {
-            console.log('Something went wrong...');
+            console.log('Error');
             console.dir(err);
             return;
         }
@@ -88,11 +85,10 @@ const viewAllDepartments = () => {
         })
 };
 
-// viewAllRoles function
 const viewAllRoles = () => {
     figlet("ALL  ROLES", function(err, res) {
         if (err) {
-            console.log('Something went wrong...');
+            console.log('Error');
             console.dir(err);
             return;
         }
@@ -111,7 +107,7 @@ const viewAllRoles = () => {
 const viewAllEmployees = () => {
     figlet("ALL  EMPLOYEES", function(err, res) {
         if (err) {
-            console.log('Something went wrong...');
+            console.log('Error');
             console.dir(err);
             return;
         }
@@ -130,7 +126,7 @@ const viewAllEmployees = () => {
 const addDepartment = () => {
     figlet("ADD  DEPARTMENT", function(err, res) {
         if (err) {
-            console.log('Something went wrong...');
+            console.log('Error');
             console.dir(err);
             return;
         }
@@ -155,7 +151,6 @@ const addDepartment = () => {
     })
 };
 
-// selectRole function used in add/update employee prompt 
 let roleArr = [];
 const selectRole = () => {
     const query = "SELECT * FROM roles";
@@ -168,7 +163,6 @@ const selectRole = () => {
     return roleArr;
 };
 
-// selectManager function for addEmployee prompt
 let managersArr = [];
 const selectManager = () => {
     const query = `SELECT first_name, last_name FROM employees WHERE manager_id IS NULL`;
@@ -181,11 +175,10 @@ const selectManager = () => {
     return managersArr;
 };
 
-// addRole function
 const addRole = () => {
     figlet("ADD  ROLE", function(err, res) {
         if (err) {
-            console.log('Something went wrong...');
+            console.log('Error');
             console.dir(err);
             return;
         }
@@ -219,11 +212,10 @@ const addRole = () => {
     });
 };
 
-// addEmployee function
 const addEmployee = () => {
     figlet("ADD  EMPLOYEE", function(err, res) {
         if (err) {
-            console.log('Something went wrong...');
+            console.log('Error');
             console.dir(err);
             return;
         }
@@ -267,11 +259,10 @@ const addEmployee = () => {
     })
 };
 
-// updateEmployee function
 const updateEmployee = () => {
     figlet("UPDATE  EMPLOYEE", function(err, res) {
         if (err) {
-            console.log('Something went wrong...');
+            console.log('Error');
             console.dir(err);
             return;
         }
@@ -290,12 +281,12 @@ const updateEmployee = () => {
                     }
                     return lastName;
                 },
-                message: "What is the Employee's last name?",
+                message: "What is the employee's last name?",
             },
             {
                 name: "role",
                 type: "rawlist",
-                message: "What is the Employees new title?",
+                message: "What is the employees new title?",
                 choices: selectRole()
             },
         ]).then(function(val) {
